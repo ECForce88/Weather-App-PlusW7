@@ -10,14 +10,16 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
+    <div class="weather-app-wrapper">
+    <div class="weather-app">
     <div
-      class="container p-5 border border-5  shadow lg-2 mb-5 bg-body bg-opacity-50 rounded">
+      class="container p-4 pb-1 border border-3 shadow lg-2 bg-body bg-opacity-50 rounded">
     
-      <form class="mb-1" id="search-form">
-        <div class="input-group" style="width: 80%">
+      <form class="mb-1 m-90" id="search-form">
+        <div class="input-group" >
           <input
             type="search"
-            class="form-control"
+            class="form-control border-1 border-dark rounded "
             placeholder="Enter city..."
             id="city-input"
           />
@@ -33,22 +35,22 @@
       </form>
 
       <section>
-            <div class="row w-100 form-group">
+            <div class="row form-group">
             <div class="col-lg-4 my-auto d-flex">
                 <div><h1 >Hartford</h1>
                   <ul class="mainDisplay">
-                    <li class="dateTime">Monday, January 16<br/>18:04</li>
+                    <li class="dateTime">Monday, January 16, 2023<br/>18:04</li>
                     <li class="condition"><strong>Cloudy</strong></li>
                   </ul>
             </div>
             </div>
             <div class="col-lg-4 d-flex">
-                <img class="pl-1 pr-2" src="images/cloudy.svg"  alt="weatherIcon" >
+                <img src="images/cloudy.svg"  alt="weatherIcon" class="pl-1 pr-2">
             </div> 
 
             <div class="col-lg-4 d-flex">
                     <h2 class="tempValue my-auto">17</h2>
-                    <span class="tempUnit my-auto">
+                    <span class="tempUnit">
                       <p class="pt-1">
                         <span class="celsius">ºC</span> /
                         <span class="fahrenheit">ºF</span>
@@ -61,7 +63,7 @@
     
     <section>
         
-        <div class="card-group w-100">
+        <div class="card-group">
             <div class="row w-100 form-group">
                 <div class="col-sm-2">
                     <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle shadow" >
@@ -137,10 +139,12 @@
             </div>
         </div>
     </section>
+</div>
+    <small><a href="https://bright-florentine-70a8ed.netlify.app/" target="_blank">  Open source code</a> by <strong>Elizabeth Forstmann</strong></small>
 
-
-      
-    </div>
+</div>
+</div>
+    
     <script src="src/index.js"></script>
   </body>
 </html>
