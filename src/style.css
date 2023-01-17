@@ -74,7 +74,12 @@ ul {
   margin-top: 5px;
   text-align:center;
 }
-
+.currentDetails{
+  font-size: 15px;
+  color: rgb(96, 96, 96);
+  padding:0;
+  
+}
 
  
 

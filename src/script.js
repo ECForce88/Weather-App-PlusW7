@@ -73,11 +73,10 @@ let days = [
     let cityInput = document.querySelector("#city-input");
     let city = `${cityInput.value}`;
     let unit = "metric";
-    let apiKey = "dt32be6cd3d5of11a004f35abf796ccf";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&${apiKey}=dt32be6cd3d5of11a004f35abf796ccf&${unit}=metric`;
-  
+    let apiKey = "5d95fd50506eedab42e7a378d353b99a";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    
     axios.get(apiUrl).then(updateDisplay);
-    console.log(apiUrl);
   }
   
   let form = document.querySelector("#search-form");
@@ -87,8 +86,8 @@ let days = [
     navigator.geolocation.getCurrentPosition(position);
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    let apiKey = "dt32be6cd3d5of11a004f35abf796ccf";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}`;
+    let apiKey = "5d95fd50506eedab42e7a378d353b99a";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   
     axios.get(apiUrl).then(updateDisplay);
   }
