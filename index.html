@@ -1,136 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App Plus-W7</title>
-   
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather App 7</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div
+      class="container p-5 border border-5  shadow lg-2 mb-5 bg-body rounded">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="src/style.css">
-</head>
-<body>
-    <div class="container p-5 border ">
-        <form class="mb-3">
-            <div class="input-group" style="width: 50%">
-                <input type="search" class="form-control" placeholder="City name" >
-                <button class="btn btn-primary mx-2 rounded" type="button">Search</button>
-                <button class="btn btn-success rounded" type="button">Current</button>
-              </div>
-        </form>
+      <form class="mb-3" id="search-form">
+        <div class="input-group" style="width: 80%">
+          <input
+            type="search"
+            class="form-control"
+            placeholder="Enter city..."
+            id="city-input"
+          />
+          
+          <button
+            class="city-input btn btn-primary mx-2 rounded"
+            type="submit"
+          >
+            Search
+          </button>
+          <button class="btn btn-success mx-2 rounded" type="button">My Location</button>
+        </div>
+      </form>
 
-        <section>
-            <div class="card-group m-100" >
-                
-                <div class="card text-center border-0">
-                    <img src="images/cloudy.svg"  alt="weatherIcon" >
-                </div> 
-
-                <div class="card text-center my-auto  border-0">
-                    <div class="card-body">
-                      <h5 class="card-title display-2 fw-bold">33º F</h5>
-                    </div>
-                  </div>
-                
-                  <div class="card my-auto border-0">
-                  <div class="card-body">
-                    <p class="card-text">Precipitation: 3% <br/> Humidity: 76% <br/> Wind: 4 mph</p>
-                  </div>  
-                </div>
-                
-                <div class="card border-0 my-auto">
-                  <div class="card-body">
-                    <h2 class="card-title fw-bold">Hartford, CT</h2>
-                    <p class="card-text">Today 5:00 AM <br/> Cloudy</p>
-                  </div>
-                </div>
+      <section>
+        <div class="row">
+            <div class="col-lg-4 my-auto d-flex">
+                <div><h1 >Hartford</h1>
+                  <ul class="mainDisplay">
+                    <li class="dateTime">Monday, January 16<br/>18:04</li>
+                    <li class="condition"><strong>Cloudy</strong></li>
+                  </ul>
             </div>
-        </section>
-
-        <section>
-        
-            <div class="card-group m-100">
-                <div class="row m-100">
-                    <div class="col-sm-2">
-                        <div class="card text-center mt-2 pt-2" >
-                            <h5 class="card-title bold">SUN</h5>
-                               <div class="card-body">
-                                <img src="images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
-                                <p class="card-text pt-2">
-                                    <strong>40° </strong>25° 
-                                </p>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="card text-center mt-2 pt-2" >
-                            <h5 class="card-title bold">MON</h5>
-                               <div class="card-body">
-                                <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
-                                <p class="card-text pt-2">
-                                    <strong>40° </strong>25° 
-                                </p>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="card text-center mt-2 pt-2" >
-                            <h5 class="card-title bold">TUE</h5>
-                               <div class="card-body">
-                                <img src="images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
-                                <p class="card-text pt-2">
-                                    <strong>40° </strong>25° 
-                                </p>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="card text-center mt-2 pt-2" >
-                            <h5 class="card-title bold">WED</h5>
-                               <div class="card-body">
-                                <img src="images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
-                                <p class="card-text pt-2">
-                                    <strong>40° </strong>25° 
-                                </p>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="card text-center mt-2 pt-2" >
-                            <h5 class="card-title bold">THU</h5>
-                               <div class="card-body">
-                                <img src="images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
-                                <p class="card-text pt-2">
-                                    <strong>40° </strong>25° 
-                                </p>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2">
-                        <div class="card text-center mt-2 pt-2" >
-                            <h5 class="card-title bold">FRI</h5>
-                               <div class="card-body">
-                                <img src="images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
-                                <p class="card-text pt-2">
-                                    <strong>40° </strong>25° 
-                                </p>
-                                </div>
-                        </div>
-                    </div>
-            
-            
             </div>
-        
-         </section>
-         
+            <div class="col-lg-4 d-flex">
+                <img class="card-img" src="images/cloudy.svg"  alt="weatherIcon" >
+            </div> 
 
+            <div class="col-lg-4 d-flex align-items-stretch">
+                    <h2 class="tempValue my-auto">17</h2>
+                    <span class="tempUnit my-auto">
+                      <p class="pt-1">
+                        <span class="celsius">ºC</span> /
+                        <span class="fahrenheit">ºF</span>
+                      </p>
+                    </span>
+                </div>
+              </div>      
+            
+        
+    </section>
+     
+    
+    <section>
+        
+        <div class="card-group w-100">
+            <div class="row w-100">
+                <div class="col-sm-2">
+                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle" >
+                        <h5 class="card-title bold">SUN</h5>
+                           <div class="card-body">
+                            <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle" >
+                        <h5 class="card-title bold">MON</h5>
+                           <div class="card-body">
+                            <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle" >
+                        <h5 class="card-title bold">TUE</h5>
+                           <div class="card-body">
+                            <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle" >
+                        <h5 class="card-title bold">WED</h5>
+                           <div class="card-body">
+                            <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle" >
+                        <h5 class="card-title bold">THU</h5>
+                           <div class="card-body">
+                            <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle" >
+                        <h5 class="card-title bold">FRI</h5>
+                           <div class="card-body">
+                            <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+
+      
     </div>
-    <script>src="src/script.js"</script>
-</body>
+    <script src="src/index.js"></script>
+  </body>
 </html>
