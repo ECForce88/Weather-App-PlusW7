@@ -36,24 +36,24 @@ let days = [
       currentMinute = `0${currentMinute}`;
     }
   
-    let h2 = document.querySelector("h2.date");
+    let date = document.querySelector("li.date");
   
-    h2.innerHTML = `${currentDay}, ${currentMonth} ${currentDate}, ${currentHour}:${currentMinute}`;
+        date.innerHTML = `${currentDay}, ${currentMonth} ${currentDate}, ${currentHour}:${currentMinute}`;
   }
   
   displayDate();
   //display local city, date/time, and weather on page loading
-  getLocalWeather();
+
   //Display city and temperature celsius
   function updateDisplay(response) {
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
     let temp = Math.round(response.data.main.temp);
-    let displayTemp = document.querySelector("h3");
+    let displayTemp = document.querySelector("h2");
     displayTemp.innerHTML = `${temp}`;
     let conditions = response.data.weather[0].main;
-    let displayConditions = document.querySelector("h2.condition");
+    let displayConditions = document.querySelector("li.condition");
     displayConditions.innerHTML = `${conditions}`;
     let precip = response.data.main.precipitation;
     let displayPrecip = document.querySelector("#precip");
@@ -77,12 +77,11 @@ let days = [
     axios.get(apiUrl).then(updateDisplay);
   }
   
-  let form = document.querySelector("#local-button");
+  let form = document.querySelector("#search-form");
   form.addEventListener("submit", getWeather);
   
   function getLocalWeather(position) {
     navigator.geolocation.getCurrentPosition(position);
-    console.log(getLocalWeather);
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
@@ -93,4 +92,26 @@ let days = [
   
   let localButton = document.querySelector("#localButton");
   localButton.addEventListener("click", getLocalWeather);
+  
+  function displayFahrenheit(event) {
+    event.preventDefault();
+    let currentTemp = document.querySelector("#tempValue");
+    let temp = currentTemp.innerHTML;
+    temp = Number(temp);
+    currentTemp.innerHTML = temp * 1.8 + 32;
+  }
+  
+  function displayCelsius(event) {
+    event.preventDefault();
+    let currentTemp = document.querySelector("#tempValue");
+    let temp = currentTemp.innerHTML;
+    temp = Number(temp);
+    currentTemp.innerHTML = temp / 1.8 - 32;
+  }
+  
+  let toFahrenheit = document.querySelector("#f-link");
+  toFahrenheit.addEventListener("click", displayFahrenheit);
+  
+  let toCelsius = document.querySelector("#c-link");
+  toCelsius.addEventListener("click", displayCelsius);
   
