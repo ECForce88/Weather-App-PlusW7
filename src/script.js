@@ -66,6 +66,7 @@ let days = [
     let windSpeed = response.data.main.wind.speed;
     let displayWindSpeed = document.querySelector("#wind-speed");
     displayWindSpeed.innerHTML = `${windSpeed}`;
+    console.log(response);
   }
   
   function getWeather(event) {
@@ -74,10 +75,12 @@ let days = [
     let city = `${cityInput.value}`;
     let unit = "metric";
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     
-    axios.get(apiUrl).then(updateDisplay);
+  axios.get(apiUrl).then(updateDisplay);
+    
   }
+  
   
   let form = document.querySelector("#search-form");
   form.addEventListener("submit", getWeather);
