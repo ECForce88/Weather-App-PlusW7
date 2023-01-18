@@ -22,7 +22,7 @@ let days = [
     "November",
     "December"
   ];
-  getLocalWeather();
+
   //Displays the current date and time when app is run
   function displayDate() {
     let now = new Date();
