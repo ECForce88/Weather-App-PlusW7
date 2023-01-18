@@ -22,7 +22,7 @@ let days = [
     "November",
     "December"
   ];
-  
+  getLocalWeather();
   //Displays the current date and time when app is run
   function displayDate() {
     let now = new Date();
@@ -63,10 +63,16 @@ let days = [
     let humidity = response.data.main.humidity;
     let displayHumidity = document.querySelector("#humidity");
     displayHumidity.innerHTML = `${humidity}`;
-    let windSpeed = response.data.main.wind.speed;
+    let windSpeed = response.data.wind.speed;
     let displayWindSpeed = document.querySelector("#wind-speed");
     displayWindSpeed.innerHTML = `${windSpeed}`;
-    console.log(response);
+  //let visibility = response.data.visibility;
+  //let displayVisibility = document.querySelector("#visibility");
+  //let dewpoint = response.data.dewpoint;
+  //let displayDewpoint = document.querySelector("#dewpoint");
+  //let visibility = response.data.visibility;
+  //let displayVisibility = document.querySelector("#visibility");
+
   }
   
   function getWeather(event) {
@@ -75,7 +81,7 @@ let days = [
     let city = `${cityInput.value}`;
     let unit = "metric";
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     
   axios.get(apiUrl).then(updateDisplay);
     

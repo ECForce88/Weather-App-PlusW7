@@ -41,20 +41,20 @@
       </form>
 
       <section>
-            <div class="row form-group">
-            <div class="col-lg-4 my-auto d-flex">
+            <div class="row">
+            <div class="col-lg-4 my-auto d-flex justify-content-center">
             <div><h1 id="city-name">Hartford</h1>
                   <ul class="mainDisplay">
                     <li class="dateTime">Monday, January 16, 2023<br/>18:04</li>
-                    <li class="condition"><strong>Cloudy</strong></li>
+                    <li class="condition"><strong>Heavy Snowfall</strong></li>
                   </ul>
             </div>
             </div>
-            <div class="col-lg-4 d-flex">
-                <img src="images/cloudy.svg"  alt="weatherIcon" class="pl-1 pr-2">
+            <div class="col-lg-4 d-flex justify-content-center">
+                <img src="images/snowy-5.svg"  alt="weatherIcon" class="pl-1 pr-2">
             </div> 
 
-            <div class="col-lg-4 d-flex">
+            <div class="col-lg-4 d-flex justify-content-center">
                     <h2 class="my-auto" id="tempValue">17</h2>
                     <span class="tempUnit">
                       <p class="pt-1">
@@ -67,68 +67,57 @@
     </section>
 
     <section>
-              <div class="row form-group">
-              <div class="col-sm-3 my-auto d-flex">
-                <ul class="currentDetails">
+              <div class="row">
+                <div class="col-sm-4 my-auto d-flex justify-content-center">
+                <ul class="currentDetails pl-3">
                   <li id="precip">
                     Precipitation: 30%
                   </li>
                   <li id="humidity">
-                    Humidity: 74
-                  </li>
-                  <li id="wind-speed">
-                    Wind Speed: 10 mph
+                    Visibility: 
                   </li>
                 </ul>                
               </div>
-              <div class="col-sm-3 my-auto d-flex">
-                <ul class="currentDetails">
-                  <li>
-                    Precipitation: 30%
-                  </li>
+              <div class="col-sm-4 my-auto d-flex justify-content-center">
+                <ul class="currentDetails pl-3">
                   <li>
                     Humidity: 
                   </li>
                   <li>
-                    Wind Speed: 10 mph
+                    Dewpoint:
                   </li>
-                </ul>          
-              </div>
-              <div class="col-sm-3 my-auto d-flex">
-                <ul class="currentDetails">
+                  </ul>
+                  </div>
+                  <div class="col-sm-4 my-auto d-flex justify-content-center">
+                    <ul class="currentDetails">
                   <li>
-                    Precipitation: 30%
-                  </li>
-                  <li>
-                    Humidity: 
+                    Wind Speed: 
                   </li>
                   <li>
-                    Wind Speed: 10 mph
-                  </li>
-                </ul>          
-              </div>
-              <div class="col-sm-3 my-auto d-flex">
-                <ul class="currentDetails">
-                  <li>
-                    Precipitation: 30%
-                  </li>
-                  <li>
-                    Humidity: 
-                  </li>
-                  <li>
-                    Wind Speed: 10 mph
+                    Wind Direction:   
                   </li>
                 </ul>          
               </div>
     </section>
-     
+        <hr class="mt-0">
+    <section>
+      <center>
+        
+        <div class="form-group w-100">
+          <button type="button" class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2" style="width:15%">Precipitation</button>
+          <button type="button" class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2" style="width:15%">Humidity</button>
+          <button type="button" class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2" style="width:15%">Visibility</button>
+          <button type="button" class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2" style="width:15%">Wind Speed</button>
+          <button type="button" class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2" style="width:15%">Windchill</button>
+        </div>
+      </center>      
+    </section>
     
     <section>
-        
         <div class="card-group">
             <div class="row w-100 form-group">
                 <div class="col-sm-2">
-                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle shadow" >
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
                         <h5 class="card-title bold">SUN</h5>
                            <div class="card-body">
                             <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
@@ -140,7 +129,7 @@
                 </div>
 
                 <div class="col-sm-2">
-                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle shadow" >
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
                         <h5 class="card-title bold">MON</h5>
                            <div class="card-body">
                             <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
@@ -152,7 +141,7 @@
                 </div>
 
                 <div class="col-sm-2">
-                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle shadow" >
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
                         <h5 class="card-title bold">TUE</h5>
                            <div class="card-body">
                             <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
@@ -164,7 +153,7 @@
                 </div>
 
                 <div class="col-sm-2">
-                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle shadow" >
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
                         <h5 class="card-title bold">WED</h5>
                            <div class="card-body">
                             <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
@@ -176,7 +165,7 @@
                 </div>
 
                 <div class="col-sm-2">
-                    <div class="card text-center mt-2 pt-2 border border-1 border-secondary-subtle shadow" >
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
                         <h5 class="card-title bold">THU</h5>
                            <div class="card-body">
                             <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
@@ -188,7 +177,7 @@
                 </div>
 
                 <div class="col-sm-2">
-                    <div class="card text-center  mt-2 pt-2 border border-1 border-secondary-subtle shadow" >
+                    <div class="card text-center  mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
                         <h5 class="card-title bold">FRI</h5>
                            <div class="card-body">
                             <img src="Images/cloudy.svg" class="img-fluid pt-0 pb-0 mt-0" />
@@ -201,12 +190,35 @@
             </div>
         </div>
     </section>
+
+    <section>
+      <div class="row d-flex flex-row w-100">
+          <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
+                <p class="forecastValue pl-3">50%</p>
+          </div>
+          <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
+            <p class="forecastValue"></p>
+          </div>
+          <div class="col-sm-2 forcastValue text-center pt-0 mb-0">
+            <p class="forecastValue text-center"></p>
+          </div>
+          <div class="col-sm-2 forcastValue text-center pt-0 mb-0">
+            <p class="forecastValue"></p>
+          </div>
+          <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
+            <p class="forecastValue"></p>
+          </div>
+          <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
+            <p class="forecastValue"></p>
+          </div>
+      </div>
+    </section>
 </div>
     <small><a href="https://bright-florentine-70a8ed.netlify.app/" target="_blank">  Open source code</a> by <strong>Elizabeth Forstmann</strong></small>
-
 </div>
 </div>
     
     <script src="src/script.js"></script>
+
   </body>
 </html>
