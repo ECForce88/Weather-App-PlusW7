@@ -3,7 +3,7 @@ body {
   padding-top: 40px;
   padding-left: 5%;
   padding-right: 5%;
-  background-image: url("https://c.pxhere.com/photos/01/3c/clouds_sky_storm_thunderstorm_rain_dark_clouds_clouds_form_covered_sky-1411165.jpg!d");
+  background-image: url("file:///C:/Users/Elizabeth/Documents/GitHub/Weather-App-PlusW7/images/10d.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: black;
@@ -39,6 +39,12 @@ ul {
   padding:0;
   font-size: 25px;
 }
+a{
+  color:white;
+}
+a:hover{
+  color:rgb(204, 60, 173);
+}
 
 .dateTime{
   font-size: 18px;
@@ -55,7 +61,8 @@ ul {
 }
 .weather-app-wrapper{
   max-width: 900px;
-  margin:0px auto; 
+  margin:0px auto;
+  color: white; 
 }
 .input-group{
   max-width:75%;
