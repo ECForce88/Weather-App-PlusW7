@@ -51,9 +51,9 @@ let days = [
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
-    let temp = Math.round(response.data.main.temp);
+    let tempCelsius = Math.round(response.data.main.temp);
     let displayTemp = document.querySelector("h2");
-    displayTemp.innerHTML = `${temp}`;
+    displayTemp.innerHTML = `${tempCelsius}`;
     let conditions = response.data.weather[0].main;
     let displayConditions = document.querySelector("li.condition");
     displayConditions.innerHTML = `${conditions}`;
@@ -139,19 +139,21 @@ let days = [
   
   function displayFahrenheit(event) {
     event.preventDefault();
+    toCelsius.classList.remove("active");
+    toFahrenheit.classList.add("active");
     let currentTemp = document.querySelector("#tempValue");
-    let temp = currentTemp.innerHTML;
-    temp = Number(temp);
-    currentTemp.innerHTML = temp * 1.8 + 32;
+    currentTemp.innerHTML = `${temp}` * 1.8 + 32;
   }
   
   function displayCelsius(event) {
     event.preventDefault();
+    toFahrenheit.classList.add("active");
+    toCelsius.classList.remove("active");
     let currentTemp = document.querySelector("#tempValue");
-    let temp = currentTemp.innerHTML;
-    temp = Number(temp);
-    currentTemp.innerHTML = temp / 1.8 - 32;
+    currentTemp.innerHTML =  `${tempCelsius}`;
   }
+
+  let tempCelsius = Math.round(response.data.main.temp);
   
   let toFahrenheit = document.querySelector("#f-link");
   toFahrenheit.addEventListener("click", displayFahrenheit);
