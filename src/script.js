@@ -1,29 +1,4 @@
-
-let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
-  //Displays the current date and time when app is run
+//Displays the current date and time when app is run
   function displayDate() {
     let now = new Date();
     let currentDay = days[now.getDay()];
@@ -40,14 +15,10 @@ let days = [
       ".dateTime"
     ).innerHTML = `${currentDay}, ${currentMonth} ${currentDate}, ${currentHour}:${currentMinute}`;
   }
-  
-  
-  displayDate();
-  //display local city, date/time, and weather on page loading
 
-  //Display city and temperature celsius
+//Display searched city and all related weather data
   function updateDisplay(response) {
-    console.log(response);
+    console.log(response.data);
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
@@ -66,9 +37,9 @@ let days = [
     let windSpeed = response.data.wind.speed;
     let displayWindSpeed = document.querySelector("#wind-speed");
     displayWindSpeed.innerHTML = `${windSpeed}`;
-
     let icon = document.querySelector("#icon")
     let backgroundImg = document.body.style.backgroundImage;
+//Displays weather icon and background image to match current conditions  
     if (`${conditions}` == "clear sky") {
       icon=url("images/01d.png");
       backgroundImg = "url('https://www.gannett-cdn.com/-mm-/0075d16b4e9af6ae2306c300e52f124f9586f1b0/c=0-26-507-312/local/-/media/2014/12/11/FortMyers/FortMyers/635539061510678812-155366999.jpg?width=1200&disable=upscale&format=pjpg&auto=webp')";
@@ -99,7 +70,7 @@ let days = [
     }  
   }
     
-    //mainIcon.setAttribute = ("alt", response.data.weather[0].description);
+  //mainIcon.setAttribute = ("alt", response.data.weather[0].description);
   //let visibility = response.data.visibility;
   //let displayVisibility = document.querySelector("#visibility");
   //let dewpoint = response.data.dewpoint;
@@ -107,7 +78,7 @@ let days = [
   //let visibility = response.data.visibility;
   //let displayVisibility = document.querySelector("#visibility");
   
-  
+//Calls the API url to get weather data based on city name searched
   function getWeather(event) {
     event.preventDefault();
     let cityInput = document.querySelector("#city-input");
@@ -116,14 +87,10 @@ let days = [
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     
-  axios.get(apiUrl).then(updateDisplay);
-    
+  axios.get(apiUrl).then(updateDisplay); 
   }
   
-  
-  let form = document.querySelector("#search-form");
-  form.addEventListener("submit", getWeather);
-  
+//Calls the API URL to get weather data based on the user's current location
   function getLocalWeather(position) {
     navigator.geolocation.getCurrentPosition(position);
     let lat = position.coords.latitude;
@@ -133,18 +100,17 @@ let days = [
   
     axios.get(apiUrl).then(updateDisplay);
   }
-  
-  let localButton = document.querySelector("#localButton");
-  localButton.addEventListener("click", getLocalWeather);
-  
+
+//Converts temp to Fahrenheit when "F" is clicked
   function displayFahrenheit(event) {
     event.preventDefault();
     toCelsius.classList.remove("active");
     toFahrenheit.classList.add("active");
     let currentTemp = document.querySelector("#tempValue");
-    currentTemp.innerHTML = `${temp}` * 1.8 + 32;
+    currentTemp.innerHTML = `${tempCelsius}` * 1.8 + 32;
   }
   
+//Converts temp to Celsius when "F" is clicked  
   function displayCelsius(event) {
     event.preventDefault();
     toFahrenheit.classList.add("active");
@@ -153,11 +119,51 @@ let days = [
     currentTemp.innerHTML =  `${tempCelsius}`;
   }
 
-  let tempCelsius = Math.round(response.data.main.temp);
+//Creates an array for days of the week
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+//Creates an array for the months of the year
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
+//Adds "click" function to the search feature
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", getWeather);
+
+//Global variable for Celsius temperature value
+let tempCelsius = Math.round(response.data.main.temp);
+
+//Converts temp to Fahrenheit when "F" is clicked
+let toFahrenheit = document.querySelector("#f-link");
+toFahrenheit.addEventListener("click", displayFahrenheit);
   
-  let toFahrenheit = document.querySelector("#f-link");
-  toFahrenheit.addEventListener("click", displayFahrenheit);
-  
-  let toCelsius = document.querySelector("#c-link");
-  toCelsius.addEventListener("click", displayCelsius);
-  
+//Converts temp to Celsius when "C" is clicked
+let toCelsius = document.querySelector("#c-link");
+toCelsius.addEventListener("click", displayCelsius);
+
+//Adds a "click" function to the "My Location" button to get the weather data based on the user's current location
+let localButton = document.querySelector("#localButton");
+localButton.addEventListener("click", getLocalWeather);
+
+//Calls the function to display current date and time
+displayDate();
