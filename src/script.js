@@ -47,7 +47,7 @@ let days = [
 
   //Display city and temperature celsius
   function updateDisplay(response) {
-    console.log("response");
+    console.log(response);
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
