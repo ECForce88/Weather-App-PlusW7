@@ -22,7 +22,7 @@
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
-    let tempCelsius = Math.round(response.data.main.temp);
+    tempCelsius = Math.round(response.data.main.temp);
     let displayTemp = document.querySelector("h2");
     displayTemp.innerHTML = `${tempCelsius}`;
     let conditions = response.data.weather[0].main;
@@ -34,20 +34,20 @@
     let humidity = response.data.main.humidity;
     let displayHumidity = document.querySelector("#humidity");
     displayHumidity.innerHTML = `${humidity}`;
-    let windSpeed = response.data.wind.speed;
-    let displayWindSpeed = document.querySelector("#wind-speed");
-    displayWindSpeed.innerHTML = `${windSpeed}`;
+    //let windSpeed = response.data.wind.speed;
+    //let displayWindSpeed = document.querySelector("#wind-speed");
+    //displayWindSpeed.innerHTML = `${windSpeed}`;
     let icon = document.querySelector("#icon")
     let backgroundImg = document.body.style.backgroundImage;
 //Displays weather icon and background image to match current conditions  
-    if (`${conditions}` == "clear sky") {
+    if (`${conditions}` == "clear") {
       icon=url("../images/01d.png");
       backgroundImg = url('https://www.gannett-cdn.com/-mm-/0075d16b4e9af6ae2306c300e52f124f9586f1b0/c=0-26-507-312/local/-/media/2014/12/11/FortMyers/FortMyers/635539061510678812-155366999.jpg?width=1200&disable=upscale&format=pjpg&auto=webp');
-    } else if (`${conditions}` == "few clouds") {
-      icon=url("images/02d.png");
+    } else if (`${conditions}` == "clouds") {
+      icon=url("../images/02d.png");
       backgroundImg = url('https://clarksvillenow.sagacom.com/files/2020/11/shutterstock_286242953.jpg');
     } else if (`${conditions}` == "scattered clouds") {
-      icon=url("images/03d.png");
+      icon=url("../images/03d.png");
       backgroundImg = url('https://media.istockphoto.com/id/1007768414/photo/blue-sky-with-bright-sun-and-clouds.jpg?s=612x612&w=0&k=20&c=MGd2-v42lNF7Ie6TtsYoKnohdCfOPFSPQt5XOz4uOy4=');
     } else if (`${conditions}` == "broken clouds") {
       icon.setAttribute = ("src", "../images/04d.png");
@@ -151,7 +151,7 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", getWeather);
 
 //Global variable for Celsius temperature value
-let tempCelsius = Math.round(response.data.main.temp);
+let tempCelsius = null;
 
 //Converts temp to Fahrenheit when "F" is clicked
 let toFahrenheit = document.querySelector("#f-link");
