@@ -18,65 +18,35 @@
 
 //Display searched city and all related weather data
   function updateDisplay(response) {
-    console.log(response.data);
+    console.log(response.data.weather[0].description);
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
     tempCelsius = Math.round(response.data.main.temp);
     let displayTemp = document.querySelector("h2");
     displayTemp.innerHTML = `${tempCelsius}`;
-    let conditions = response.data.weather[0].main;
+    let conditions = response.data.weather[0].description;
     let displayConditions = document.querySelector("li.condition");
     displayConditions.innerHTML = `${conditions}`;
-    let precip = response.data.main.precipitation;
-    let displayPrecip = document.querySelector("#precip");
-    displayPrecip.innerHTML = `${precip}`;
     let humidity = response.data.main.humidity;
     let displayHumidity = document.querySelector("#humidity");
-    displayHumidity.innerHTML = `${humidity}`;
-    //let windSpeed = response.data.wind.speed;
-    //let displayWindSpeed = document.querySelector("#wind-speed");
-    //displayWindSpeed.innerHTML = `${windSpeed}`;
+    displayHumidity.innerHTML = `Humidity: ${humidity}`;
+    let wind = Math.round(response.data.wind.speed);
+    let displayWindSpeed = document.querySelector("#windSpeed");
+    displayWindSpeed.innerHTML = `Wind Speed: ${wind}`;
+    let visibility = response.data.visibility;
+    let displayVisibility = document.querySelector("#visibility");
+    displayVisibility.innerHTML = `Visibility: ${visibility}`;
     let icon = document.querySelector("#icon")
-    let backgroundImg = document.body.style.backgroundImage;
+//backgroundImg = document.body.style.backgroundImage;
 //Displays weather icon and background image to match current conditions  
-    if (`${conditions}` == "clear") {
-      icon=url("../images/01d.png");
-      backgroundImg = url('https://www.gannett-cdn.com/-mm-/0075d16b4e9af6ae2306c300e52f124f9586f1b0/c=0-26-507-312/local/-/media/2014/12/11/FortMyers/FortMyers/635539061510678812-155366999.jpg?width=1200&disable=upscale&format=pjpg&auto=webp');
-    } else if (`${conditions}` == "clouds") {
-      icon=url("../images/02d.png");
-      backgroundImg = url('https://clarksvillenow.sagacom.com/files/2020/11/shutterstock_286242953.jpg');
-    } else if (`${conditions}` == "scattered clouds") {
-      icon=url("../images/03d.png");
-      backgroundImg = url('https://media.istockphoto.com/id/1007768414/photo/blue-sky-with-bright-sun-and-clouds.jpg?s=612x612&w=0&k=20&c=MGd2-v42lNF7Ie6TtsYoKnohdCfOPFSPQt5XOz4uOy4=');
-    } else if (`${conditions}` == "broken clouds") {
-      icon.setAttribute = ("src", "../images/04d.png");
-      backgroundImg = url('../images/background-cloudy.JPEG');
-    } else if (`${conditions}` == "images/shower rain") {
-      icon.setAttribute = ("src", "../images/09d.png");
-      backgroundImg = url('../background-rain.jpg');
-    } else if (`${conditions}` == "rain") {
-      icon.setAttribute = ("src", "../images/10d.png");
-      backgroundImg = url('https://i.pinimg.com/originals/83/85/57/83855758bba8c7fbecc43356ddfaf6e2.gif');
-    } else if (`${conditions}` == "thunderstorm") {
-      icon.setAttribute = ("src", "../images/11d.png");
-      backgroundImg = url('https://c.pxhere.com/photos/01/3c/clouds_sky_storm_thunderstorm_rain_dark_clouds_clouds_form_covered_sky-1411165.jpg!d');
-    } else if (`${conditions}` == "snow") {
-      icon.setAttribute = ("src", "../images/13d.png");
-      backgroundImg = url('https://thumbs.gfycat.com/DiscreteAnnualCopperhead.webp');
-    } else if (`${conditions}` == "mist") {
-      icon.setAttribute = ("src", "../images/50d.png");
-//backgroundImg = "url('
+    icon.setAttribute("src",`images/${response.data.weather[0].icon}.png`);
   }
-}
     
   //mainIcon.setAttribute = ("alt", response.data.weather[0].description);
-  //let visibility = response.data.visibility;
-  //let displayVisibility = document.querySelector("#visibility");
+  
   //let dewpoint = response.data.dewpoint;
   //let displayDewpoint = document.querySelector("#dewpoint");
-  //let visibility = response.data.visibility;
-  //let displayVisibility = document.querySelector("#visibility");
   
 //Calls the API url to get weather data based on city name searched
   function getWeather(event) {
@@ -107,7 +77,7 @@
     toCelsius.classList.remove("active");
     toFahrenheit.classList.add("active");
     let currentTemp = document.querySelector("#tempValue");
-    currentTemp.innerHTML = `${tempCelsius}` * 1.8 + 32;
+    currentTemp.innerHTML = Math.round(`${tempCelsius}` * 1.8 + 32);
   }
   
 //Converts temp to Celsius when "F" is clicked  
