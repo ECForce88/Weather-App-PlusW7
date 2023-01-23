@@ -3,12 +3,13 @@ body {
   padding-top: 40px;
   padding-left: 5%;
   padding-right: 5%;
-  background-image: url("file:///C:/Users/Elizabeth/Documents/GitHub/Weather-App-PlusW7/images/10d.png");
+  background-image: url("../images/background-rain.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: black;
   background-color: #6fa2ff;
 }
+
 hr{
   color:black;
 }
