@@ -23,6 +23,8 @@
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
     tempCelsius = Math.round(response.data.main.temp);
+    toFahrenheit.classList.remove("active");
+    toCelsius.classList.add("active");
     let displayTemp = document.querySelector("h2");
     displayTemp.innerHTML = `${tempCelsius}`;
     let conditions = response.data.weather[0].description;
@@ -56,7 +58,8 @@
     let unit = "metric";
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
-    
+  
+  cityInput.vslur="";
   axios.get(apiUrl).then(updateDisplay); 
   }
   
@@ -83,8 +86,8 @@
 //Converts temp to Celsius when "F" is clicked  
   function displayCelsius(event) {
     event.preventDefault();
-    toFahrenheit.classList.add("active");
-    toCelsius.classList.remove("active");
+    toFahrenheit.classList.remove("active");
+    toCelsius.classList.add("active");
     let currentTemp = document.querySelector("#tempValue");
     currentTemp.innerHTML =  `${tempCelsius}`;
   }
