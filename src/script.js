@@ -59,7 +59,7 @@
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   
-  cityInput.value="";
+  cityInput.vslur="";
   axios.get(apiUrl).then(updateDisplay); 
   }
   
@@ -91,33 +91,6 @@
     let currentTemp = document.querySelector("#tempValue");
     currentTemp.innerHTML =  `${tempCelsius}`;
   }
-
-  function displayForecast(){
-    let forecastElement = document.querySelector("#forecast");
-    let forecastHTML= `<div class="row">`;
-    
-    forecastHTML = forecastHTML + 
-     `
-     <div class="card=group">
-     <div class="col-sm-2">
-          <div class="card text-center mt-0 pb-0 pt-2 h=100 border border-1 border-secondary-subtle shadow id="forecast" >
-            <h5 class="card-title bold"><strong>${forecastDay}</strong></h5>
-                <div class="card-body">
-                <img src="images/11d.png" class="img-fluid pt-0 pb-0 mt-0" />
-                <p class="card-text pt-2">
-                  <strong>40° </strong>25° 
-                 </p>
-          </div>
-      </div>
-      </div>            
-        </div>`;
-
-    forecastHTML = forecastHTML +`</div>`;        
-    forecastElement.innerHTML= forecastHTML; 
-  } 
-           
-  
-
 
 //Creates an array for days of the week
 let days = [
@@ -167,4 +140,3 @@ localButton.addEventListener("click", getLocalWeather);
 
 //Calls the function to display current date and time
 displayDate();
-displayForecast();
