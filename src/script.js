@@ -108,10 +108,71 @@
                             </div>
                     </div>
                 </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
+                        <h5 class="card-title bold">MON</h5>
+                           <div class="card-body">
+                            <img src="images/09d.png" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
+                        <h5 class="card-title mb-0 bold">TUE</h5>
+                           <div class="card-body">
+                            <img src="images/01d.png" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-0">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
+                        <h5 class="card-title bold">WED</h5>
+                           <div class="card-body">
+                            <img src="images/02d.png" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
+                        <h5 class="card-title bold">THU</h5>
+                           <div class="card-body">
+                            <img src="images/03d.png" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="card text-center  mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
+                        <h5 class="card-title bold">FRI</h5>
+                           <div class="card-body">
+                            <img src="images/04d.png" class="img-fluid pt-0 pb-0 mt-0" />
+                            <p class="card-text pt-2">
+                                <strong>40° </strong>25° 
+                            </p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     `;
-    
     forecastHTML = forecastHTML +   `</div>`;
-    forecastElement.innerHTML = forecastHTML;
+    forecastElement.innerHTML = ;
   }
 
 //Creates an array for days of the week
