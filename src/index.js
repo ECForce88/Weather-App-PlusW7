@@ -1,5 +1,5 @@
 //Displays the current date and time when app is run
-  function displayDate() {
+function displayDate() {
     let now = new Date();
     let currentDay = days[now.getDay()];
     let currentMonth = months[now.getMonth()];
@@ -18,7 +18,6 @@
 
 //Display searched city and all related weather data
   function updateDisplay(response) {
-    console.log(response.data.weather[0].description);
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
@@ -39,11 +38,13 @@
     let visibility = response.data.visibility;
     let displayVisibility = document.querySelector("#visibility");
     displayVisibility.innerHTML = `Visibility: ${visibility}`;
-    let icon = document.querySelector("#icon")
+    let icon = document.querySelector("#icon");
 //backgroundImg = document.body.style.backgroundImage;
 //Displays weather icon and background image to match current conditions  
     icon.setAttribute("src",`images/${response.data.weather[0].icon}.png`);
+    getForecast(response.data.coord);
   }
+
     
   //mainIcon.setAttribute = ("alt", response.data.weather[0].description);
   
@@ -59,7 +60,7 @@
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   
-  cityInput.vslur="";
+  cityInput.value = "";
   axios.get(apiUrl).then(updateDisplay); 
   }
   
@@ -92,90 +93,45 @@
     currentTemp.innerHTML =  `${tempCelsius}`;
   }
 
-  function displayForecast(){
+  function displayForecast(response){
+    console.log(response.date.daily);
     let forecastElement = document.querySelector("#forecast");
+    let forecastDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     let forecastHTML = `<div class="row w-100 form-group">`;
-    forecastHTML = forecastHTML + 
-    `
-                <div class="col-sm-2">
-                    <div class="card text-center mt-0 pb-0 pt-2 h=100 border border-1 border-secondary-subtle shadow" >
-                        <h5 class="card-title bold">SUN</h5>
-                           <div class="card-body">
-                            <img src="images/11d.png" class="img-fluid pt-0 pb-0 mt-0" />
-                            <p class="card-text pt-2">
-                                <strong>40° </strong>25° 
-                            </p>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
-                        <h5 class="card-title bold">MON</h5>
-                           <div class="card-body">
-                            <img src="images/09d.png" class="img-fluid pt-0 pb-0 mt-0" />
-                            <p class="card-text pt-2">
-                                <strong>40° </strong>25° 
-                            </p>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
-                        <h5 class="card-title mb-0 bold">TUE</h5>
-                           <div class="card-body">
-                            <img src="images/01d.png" class="img-fluid pt-0 pb-0 mt-0" />
-                            <p class="card-text pt-0">
-                                <strong>40° </strong>25° 
-                            </p>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
-                        <h5 class="card-title bold">WED</h5>
-                           <div class="card-body">
-                            <img src="images/02d.png" class="img-fluid pt-0 pb-0 mt-0" />
-                            <p class="card-text pt-2">
-                                <strong>40° </strong>25° 
-                            </p>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="card text-center mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
-                        <h5 class="card-title bold">THU</h5>
-                           <div class="card-body">
-                            <img src="images/03d.png" class="img-fluid pt-0 pb-0 mt-0" />
-                            <p class="card-text pt-2">
-                                <strong>40° </strong>25° 
-                            </p>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-2">
-                    <div class="card text-center  mt-0 pb-0 pt-2 border border-1 border-secondary-subtle shadow" >
-                        <h5 class="card-title bold">FRI</h5>
-                           <div class="card-body">
-                            <img src="images/04d.png" class="img-fluid pt-0 pb-0 mt-0" />
-                            <p class="card-text pt-2">
-                                <strong>40° </strong>25° 
-                            </p>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+    forecastDays.forEach(function (day) {
+      forecastHTML = forecastHTML + 
+        `<div class="col-sm-2">
+          <div class="card text-center mt-0 pb-0 pt-2 h=100 border border-1 border-secondary-subtle shadow" >
+              <h5 class="card-title bold">${day}</h5>
+                  <div class="card-body">
+                  <img src="https://openweathermap.org/img/wn/${
+                    forecastDays.weather[0].icon
+                  }@2x.png" class="img-fluid pt-0 pb-0 mt-0" />
+                  <p class="card-text pt-2">
+                      <strong>${Math.round(
+                        forecastDay.temp.max
+                      )}° </strong>${Math.round(
+                        forecastDays.temp.min
+                      )}° 
+                  </p>
+                  </div>
+              </div>
+          </div>
+        `;
+      });
+        
     forecastHTML = forecastHTML +   `</div>`;
-    forecastElement.innerHTML = ;
+    forecastElement.innerHTML = forecastHTML;
+      console.log(forecastHTML);
   }
 
-//Creates an array for days of the week
+  function getForecast(coordinates) {
+    let apiKey = "5d95fd50506eedab42e7a378d353b99a";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecast);
+  }
+
+//Creates an array for date/days
 let days = [
   "Sunday",
   "Monday",
