@@ -6,133 +6,164 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Weather App 7</title>
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    
     <div class="weather-app-wrapper">
-    <div class="weather-app">
-    <div
-      class="container p-4 pb-1 border border-3 shadow lg-2 bg-body bg-opacity-75 rounded">
-    
-      <form class="mb-1 m-90" id="search-form">
-        <div class="input-group" >
-          <input
-            type="search"
-            class="form-control border-1 border-dark rounded "
-            placeholder="Enter city..."
-            id="city-input"
-          />
-          
-          <button
-            class="geolocation btn btn-primary mx-2 rounded"
-            type="submit"
-          >
-            Search
-          </button>
-          <button
+      <div class="weather-app">
+        <div
+          class="container p-4 pb-1 border border-3 shadow lg-2 bg-body bg-opacity-75 rounded"
+        >
+          <form class="mb-1 m-90" id="search-form">
+            <div class="input-group">
+              <input
+                type="search"
+                class="form-control border-1 border-dark rounded"
+                placeholder="Enter city..."
+                id="city-input"
+              />
+
+              <button
+                class="geolocation btn btn-primary mx-2 rounded"
+                type="submit"
+              >
+                Search
+              </button>
+              <button
                 class="btn btn-success mx-2 rounded"
                 type="button"
-                id="localButton"  
+                id="localButton"
               >
                 My Location
               </button>
-        </div>
-      </form>
+            </div>
+          </form>
 
-      <section>
+          <section>
             <div class="row">
-            <div class="col-lg-4 my-auto d-flex justify-content-center">
-            <div><h1 id="city-name">Hartford</h1>
+              <div class="col-lg-4 my-auto d-flex justify-content-center">
+                <div>
+                  <h1 id="city-name">Hartford</h1>
                   <ul class="mainDisplay">
-                    <li class="dateTime">Monday, January 16, 2023<br/>18:04</li>
-                    <li class="condition text-capitalize"><strong>Rain</strong></li>
+                    <li class="dateTime">
+                      Monday, January 16, 2023<br />18:04
+                    </li>
+                    <li class="condition text-capitalize">
+                      <strong>Rain</strong>
+                    </li>
                   </ul>
-            </div>
-          </div>
-            
-            <div class="col-lg-4 d-flex justify-content-center">
-                <img src="images/10d.png"  alt="weatherIcon" class="pl-1 pr-2 py-3 my-3 h-75 w-75" id="icon">
-            </div>
-
-            <div class="col-lg-4 d-flex justify-content-center">
-                    <h2 class="my-auto" id="tempValue">6</h2>
-                    <span class="tempUnit">
-                      <p class="pt-4 mt-5">
-                        <span>ºF</span> 
-                      </p>
-                    </span>
                 </div>
-              </div>          
-    </section>
+              </div>
 
-    <section>
-              <div class="row">
-                <div class="col-sm-4 mt-0 d-flex justify-content-center">
+              <div class="col-lg-4 d-flex justify-content-center">
+                <img
+                  src="images/10d.png"
+                  alt="weatherIcon"
+                  class="pl-1 pr-2 py-3 my-3 h-75 w-75"
+                  id="icon"
+                />
+              </div>
+
+              <div class="col-lg-4 d-flex justify-content-center">
+                <h2 class="my-auto" id="tempValue">6</h2>
+                <span class="tempUnit">
+                  <p class="pt-4 mt-5">
+                    <span>ºF</span>
+                  </p>
+                </span>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div class="row">
+              <div class="col-sm-4 mt-0 d-flex justify-content-center">
                 <ul class="currentDetails pl-3">
-                  <li id="visibility">
-                    Visibility: 
-                  </li>
-                </ul>                
+                  <li id="visibility">Visibility:</li>
+                </ul>
               </div>
               <div class="col-sm-4 mt-0 d-flex justify-content-center">
                 <ul class="currentDetails pl-3">
-                  <li id="humidity">
-                    Humidity: 
-                  </li>
-                  </ul>
-                  </div>
-                  <div class="col-sm-4 mt-0 d-flex justify-content-center">
-                    <ul class="currentDetails">
-                  <li id="windSpeed">
-                    Wind Speed: 
-                  </li>
-                </ul>          
+                  <li id="humidity">Humidity:</li>
+                </ul>
               </div>
-    </section>
-        <hr class="mt-0">
-    <section>
-      <center>
-        
-        <div class="form-group w-100">
-          <button type="button" class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2 shadow-sm" style="width:15%">Humidity</button>
-          <button type="button" class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2 shadow-sm" style="width:15%">Visibility</button>
-          <button type="button" class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2 shadow-sm" style="width:15%">Wind Speed</button>
-          </div>
-      </center>      
-    </section>
-    
-    
+              <div class="col-sm-4 mt-0 d-flex justify-content-center">
+                <ul class="currentDetails">
+                  <li id="windSpeed">Wind Speed:</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <hr class="mt-0" />
+          <section class="text-center">
+            <div class="form-group w-100">
+              <button
+                type="button"
+                class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2 shadow-sm"
+                style="width: 15%"
+              >
+                Humidity
+              </button>
+              <button
+                type="button"
+                class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2 shadow-sm"
+                style="width: 15%"
+              >
+                Visibility
+              </button>
+              <button
+                type="button"
+                class="forecast-button btn btn-light border border-1 mx-1 py-1 mt-2 shadow-sm"
+                style="width: 15%"
+              >
+                Wind Speed
+              </button>
+            </div>
+          </section>
 
-    <section>
-      <div class="row d-flex flex-row w-100">
-          <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
-                <p class="forecastValue pl-3">50%</p>
-          </div>
-          <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
-            <p class="forecastValue"></p>
-          </div>
-          <div class="col-sm-2 forcastValue text-center pt-0 mb-0">
-            <p class="forecastValue text-center"></p>
-          </div>
-          <div class="col-sm-2 forcastValue text-center pt-0 mb-0">
-            <p class="forecastValue"></p>
-          </div>
-          <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
-            <p class="forecastValue"></p>
-          </div>
-          <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
-            <p class="forecastValue"></p>
-          </div>
+          <section>
+            <div class="card=group" id="forecast">
+              <div class="row d-flex flex-row w-100">
+                <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
+                  <p class="forecastValue pl-3">50%</p>
+                </div>
+                <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
+                  <p class="forecastValue"></p>
+                </div>
+                <div class="col-sm-2 forcastValue text-center pt-0 mb-0">
+                  <p class="forecastValue text-center"></p>
+                </div>
+                <div class="col-sm-2 forcastValue text-center pt-0 mb-0">
+                  <p class="forecastValue"></p>
+                </div>
+                <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
+                  <p class="forecastValue"></p>
+                </div>
+                <div class="col-sm-2 forcastValue text-center pt-0 m0-0">
+                  <p class="forecastValue"></p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <small
+          ><a
+            href="https://bright-florentine-70a8ed.netlify.app/"
+            target="_blank"
+          >
+            Open source code</a
+          >
+          by <strong>Elizabeth Forstmann</strong></small
+        >
       </div>
-    </section>
-</div>
-    <small><a href="https://bright-florentine-70a8ed.netlify.app/" target="_blank">  Open source code</a> by <strong>Elizabeth Forstmann</strong></small>
-</div>
-</div>
-    
-    <script src="src/index.js"></script>
+    </div>
 
+    <script src="src/index.js"></script>
   </body>
 </html>
