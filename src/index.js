@@ -21,20 +21,18 @@ function displayDate() {
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
-    tempCelsius = Math.round(response.data.main.temp);
-    toFahrenheit.classList.remove("active");
-    toCelsius.classList.add("active");
+    let temp = Math.round(response.data.main.temp*1.8 + 32);
     let displayTemp = document.querySelector("h2");
-    displayTemp.innerHTML = `${tempCelsius}`;
+    displayTemp.innerHTML = Math.round(`${temp}`);
     let conditions = response.data.weather[0].description;
     let displayConditions = document.querySelector("li.condition");
     displayConditions.innerHTML = `${conditions}`;
     let humidity = response.data.main.humidity;
     let displayHumidity = document.querySelector("#humidity");
-    displayHumidity.innerHTML = `Humidity: ${humidity}`;
-    let wind = Math.round(response.data.wind.speed);
-    let displayWindSpeed = document.querySelector("#windSpeed");
-    displayWindSpeed.innerHTML = `Wind Speed: ${wind}`;
+    displayHumidity.innerHTML = `Humidity: ${humidity}%`;
+    let wind = Math.round(response.data.wind.speed  * 1.609344);
+    let displayWind = document.querySelector("#windSpeed");
+    displayWind.innerHTML = `Wind: ${wind} mph`;
     let visibility = response.data.visibility;
     let displayVisibility = document.querySelector("#visibility");
     displayVisibility.innerHTML = `Visibility: ${visibility}`;
@@ -43,24 +41,14 @@ function displayDate() {
 //Displays weather icon and background image to match current conditions  
     icon.setAttribute("src",`images/${response.data.weather[0].icon}.png`);
     getForecast(response.data.coord);
-  }
-
-  function formatDay(timestamp) {
-    let date = new Date(timestamp * 1000);
-    let day = date.getDay();
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  
-    return days[day];
   } 
  
-  
-  
 //Calls the API url to get weather data based on city name searched
   function getWeather(event) {
     event.preventDefault();
     let cityInput = document.querySelector("#city-input");
     let city = `${cityInput.value}`;
-    let unit = "metric";
+    let unit = "imperial";
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   
@@ -79,23 +67,7 @@ function displayDate() {
     axios.get(apiUrl).then(updateDisplay);
   }
 
-//Converts temp to Fahrenheit when "F" is clicked
-  function displayFahrenheit(event) {
-    event.preventDefault();
-    toCelsius.classList.remove("active");
-    toFahrenheit.classList.add("active");
-    let currentTemp = document.querySelector("#tempValue");
-    currentTemp.innerHTML = Math.round(`${tempCelsius}` * 1.8 + 32);
-  }
   
-//Converts temp to Celsius when "F" is clicked  
-  function displayCelsius(event) {
-    event.preventDefault();
-    toFahrenheit.classList.remove("active");
-    toCelsius.classList.add("active");
-    let currentTemp = document.querySelector("#tempValue");
-    currentTemp.innerHTML =  `${tempCelsius}`;
-  }
 
   function displayForecast(response){
     let forecast = response.date.daily;
@@ -170,15 +142,7 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", getWeather);
 
 //Global variable for Celsius temperature value
-let tempCelsius = null;
-
-//Converts temp to Fahrenheit when "F" is clicked
-let toFahrenheit = document.querySelector("#f-link");
-toFahrenheit.addEventListener("click", displayFahrenheit);
-  
-//Converts temp to Celsius when "C" is clicked
-let toCelsius = document.querySelector("#c-link");
-toCelsius.addEventListener("click", displayCelsius);
+let temp = null;
 
 //Adds a "click" function to the "My Location" button to get the weather data based on the user's current location
 let localButton = document.querySelector("#localButton");
