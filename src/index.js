@@ -21,7 +21,7 @@ function displayDate() {
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
-    let temp = Math.round(response.data.main.temp*1.8 + 32);
+    let temp = Math.round(response.data.main.temp);
     let displayTemp = document.querySelector("h2");
     displayTemp.innerHTML = Math.round(`${temp}`);
     let conditions = response.data.weather[0].description;
