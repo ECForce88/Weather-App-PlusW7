@@ -18,7 +18,6 @@ function displayDate() {
   
   //Display searched city and all related weather data
   function updateDisplay(response) {
-    console.log(response.data.weather[0].description);
     let city = response.data.name;
     let displayCity = document.querySelector("#city-name");
     displayCity.innerHTML = `${city}`;
@@ -30,17 +29,20 @@ function displayDate() {
     displayConditions.innerHTML = `${conditions}`;
     let humidity = response.data.main.humidity;
     let displayHumidity = document.querySelector("#humidity");
-    displayHumidity.innerHTML = `Humidity: ${humidity}`;
+    displayHumidity.innerHTML = `Humidity: ${humidity}%`;
     let wind = Math.round(response.data.wind.speed);
     let displayWindSpeed = document.querySelector("#windSpeed");
-    displayWindSpeed.innerHTML = `Wind Speed: ${wind}`;
-    let visibility = response.data.visibility;
+    displayWindSpeed.innerHTML = `Wind: ${wind} mph`;
+    let visibility = Math.round(response.data.visibility *0.000621371);
     let displayVisibility = document.querySelector("#visibility");
-    displayVisibility.innerHTML = `Visibility: ${visibility}`;
+    displayVisibility.innerHTML = `Visibility: ${visibility} Mi`;
     let icon = document.querySelector("#icon");
-    //backgroundImg = document.body.style.backgroundImage;
+    let backgroundImage = document.body.style.backgroundImage;
     //Displays weather icon and background image to match current conditions
     icon.setAttribute("src", `images/${response.data.weather[0].icon}.png`);
+    if (icon == "01d.png" || icon == "01n.png"){
+        backgroundImage.src = "https://www.gannett-cdn.com/-mm-/0075d16b4e9af6ae2306c300e52f124f9586f1b0/c=0-26-507-312/local/-/media/2014/12/11/FortMyers/FortMyers/635539061510678812-155366999.jpg?width=1200&disable=upscale&format=pjpg&auto=webp";
+    }
     getForecast(response.data.coord);
   }
   function formatDay(timestamp) {
@@ -61,7 +63,7 @@ function displayDate() {
     event.preventDefault();
     let cityInput = document.querySelector("#city-input");
     let city = `${cityInput.value}`;
-    let unit = "metric";
+    let unit = "imperial";
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   
@@ -74,7 +76,7 @@ function displayDate() {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     let apiKey = "5d95fd50506eedab42e7a378d353b99a";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
   
     axios.get(apiUrl).then(updateDisplay);
   }
@@ -85,6 +87,7 @@ function displayDate() {
   }
 
   function displayForecast(response) {
+    console.log(response);
     let forecast = response.data.daily;
     let forecastElement = document.querySelector("#forecast");
     let forecastHTML = `<div class="row w-100 form-group">`;
@@ -93,7 +96,7 @@ function displayDate() {
         forecastHTML =
           forecastHTML +
           `<div class="col-sm-2">
-          <div class="card text-center mt-0 pb-0 pt-2 h=100 border border-1 border-secondary-subtle shadow" >
+          <div class="card text-center mt-1 pb-0 pt-2 h=100 border border-1 border-secondary-subtle shadow" >
               <h5 class="card-title bold">${formatDay(forecastDay.dt)}</h5>
                   <div class="card-body">
                   <img src="http://openweathermap.org/img/wn/${
@@ -116,7 +119,7 @@ function displayDate() {
   
   function getForecast(coordinates) {
     let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
     axios.get(apiUrl).then(displayForecast);
   }
   
