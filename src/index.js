@@ -99,10 +99,10 @@ function displayDate() {
           <div class="card text-center mt-1 pb-0 pt-2 h=100 border border-1 border-secondary-subtle shadow" >
               <h5 class="card-title bold">${formatDay(forecastDay.dt)}</h5>
                   <div class="card-body">
-                  <img src="http://openweathermap.org/img/wn/${
+                  <img src="images/${
                     forecastDay.weather[0].icon
-                  }@2x.png" class="img-fluid pt-0 pb-0 mt-0" />
-                  <p class="card-text pt-2">
+                  }.png" class="img-fluid pt-0 pb-0 mt-0" />
+                  <p class="card-text  pt-2">
                       <strong>${Math.round(
                         forecastDay.temp.max
                       )}° </strong>${Math.round(forecastDay.temp.min)}° 
