@@ -3,7 +3,7 @@ body {
   padding-top: 40px;
   padding-left: 5%;
   padding-right: 5%;
-  background-image: url("../images/background-cloudy.jpeg");
+  background-image: url("https://cdn.bhdw.net/im/the-sun-radiating-its-light-behind-clusters-of-white-clouds-wallpaper-95589_w635.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgb(192, 192, 192);
@@ -64,7 +64,7 @@ a:hover{
 }
 
 .weather-app-wrapper{  
-  margin:0px auto;
+  text-align: center;
   color: white; 
 }
 
